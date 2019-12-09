@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 65  # Order that this section will appear.
 
-title = "Projects"
+title = "Topic Areas"
 subtitle = ""
 
 [content]
@@ -21,18 +21,73 @@ subtitle = ""
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 0
   
+  #filling in buttons currently as statistical topics (eg correlation, regression)
+  #currently listing in alphabetical order
+  
   [[content.filter_button]]
     name = "All"
     tag = "*"
-  
+    
   [[content.filter_button]]
-    name = "Deep Learning"
-    tag = "Deep Learning"
-  
+    name = "ANOVA"
+    tag = "ANOVA"
+    
   [[content.filter_button]]
-    name = "Other"
-    tag = "Demo"
+    name = "Central Limit Theorom"
+    tag = "Central Limit Theorom"
+    
+  [[content.filter_button]]
+    name = "Chi-Square"
+    tag = "Chi-Square"   
+    
+  [[content.filter_button]]
+    name = "Correlation"
+    tag = "Correlation"
+    
+  [[content.filter_button]]
+    name = "Cox Regression"
+    tag = "Cox Regression" 
 
+  [[content.filter_button]]
+    name = "Latent Class Analysis"
+    tag = "Latent Class Analysis"
+
+  [[content.filter_button]]
+    name = "Linear Regression"
+    tag = "Linear Regression"
+
+  [[content.filter_button]]
+    name = "Logistic Regression (Binary)"
+    tag = "Logistic Regression (Binary)"
+    
+  [[content.filter_button]]
+    name = "Logistic Regression (Multinomial)"
+    tag = "Logistic Regression (Multinomial)"
+
+  [[content.filter_button]]
+    name = "Logistic Regression (Ordinal)"
+    tag = "Logistic Regression (Ordinal)"
+    
+  [[content.filter_button]]
+    name = "Negative Binomial Regression"
+    tag = "Negative Binomial Regression"
+    
+  [[content.filter_button]]
+    name = "Poisson Regression"
+    tag = "Poisson Regression"  
+
+  [[content.filter_button]]
+    name = "Power"
+    tag = "Power"  
+    
+  [[content.filter_button]]
+    name = "Sampling"
+    tag = "Sampling"
+    
+  [[content.filter_button]]
+    name = "T-Test"
+    tag = "T-Test"
+    
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
   columns = "2"

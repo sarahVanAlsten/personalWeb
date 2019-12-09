@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors | Academic</title>
+    <title>Authors | Diversify Your Syllabi</title>
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
@@ -17,12 +17,8 @@
       <link>/authors/admin/</link>
       <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
-      <description>&lt;p&gt;This website is dedicated to increasing the visibility and representation of women and 
-underrepresented groups in statistics and statistics literature. Previous work in other fields,
-such as &lt;a href=&#34;https://www.cambridge.org/core/journals/international-organization/article/gender-citation-gap-in-international-relations/3A769C5CFA7E24C32641CDB2FD03126A&#34;&gt;&lt;strong&gt;international relations&lt;/strong&gt;&lt;/a&gt;, has shown that studies with a female first- or only-author recieve around 80% as many
-citations as similar studies authored by men. The problem begins early: with our syllabi.
-We aim to provide a repository of female-authored statistics articles that can be used
-to &amp;ldquo;Diversify Your Syllabi.&amp;rdquo; Thanks for dropping by.&lt;/p&gt;
+      <description>&lt;p&gt;This website is the brainchild of Dr. Jenine Harris, Professor of Biostatistics at Washington Univeristy, St. Louis. After noticing the lack of representation of women and underrepresented groups in statistics - both in terms of citations and presence - she set out to create a forum dedicated to increasing the representativeness of these groups in statistics and statistics literature. Previous work in other fields,
+such as &lt;a href=&#34;https://www.cambridge.org/core/journals/international-organization/article/gender-citation-gap-in-international-relations/3A769C5CFA7E24C32641CDB2FD03126A&#34;&gt;&lt;strong&gt;international relations&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://pdfs.semanticscholar.org/0be4/54d2567bbf87461116323fe2b979f46f344f.pdf&#34;&gt;&lt;strong&gt;political science&lt;/strong&gt;&lt;/a&gt;, has shown that studies with a female first- or only-author recieve fewer citations than similar studies authored by men. The problem begins early: with our syllabi. By creating a repository of high-quality, woman-authored statistics research readily available, we aim to help &amp;ldquo;Diversify Your Syllabi.&amp;rdquo; Thanks for dropping by.&lt;/p&gt;
 </description>
     </item>
     
