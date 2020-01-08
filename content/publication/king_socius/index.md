@@ -5,10 +5,6 @@ authors:
 date: "2017-12-08T00:00:00Z"
 doi: "10.1177/2378023117738903"
 featured: false
-#image:
-#  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
-#  focal_point: ""
-#  preview_only: false
 publication: '*Socius: Social Research for a Dynamic World*(3)'
 publication_short: ""
 publication_types:

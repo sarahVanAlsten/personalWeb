@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Helena Mihaljevic-Brandt, Lucia Santamaria, Marco Tullney | Diversify Your Syllabi</title>
+    <link>/authors/helena-mihaljevic-brandt-lucia-santamaria-marco-tullney/</link>
+      <atom:link href="/authors/helena-mihaljevic-brandt-lucia-santamaria-marco-tullney/index.xml" rel="self" type="application/rss+xml" />
+    <description>Helena Mihaljevic-Brandt, Lucia Santamaria, Marco Tullney</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Helena Mihaljevic-Brandt, Lucia Santamaria, Marco Tullney</title>
+      <link>/authors/helena-mihaljevic-brandt-lucia-santamaria-marco-tullney/</link>
+    </image>
+    
+    <item>
+      <title>The Effect of Gender in the Publication Patterns in Mathematics</title>
+      <link>/publication/milhaljevicbrandt_plosone/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/milhaljevicbrandt_plosone/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
