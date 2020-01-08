@@ -19,7 +19,7 @@ tags:
 - Self-citation
 - Citation
 - Gender
-title: An example journal article
+title: Gender Gaps in Self-Citation
 url_code: ""
 url_dataset: ""
 url_pdf: https://arxiv.org/pdf/1607.00376

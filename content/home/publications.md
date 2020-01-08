@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 90  # Order that this section will appear.
 
-title = "Recent Publications"
+title = ""
 subtitle = ""
 
 [content]
@@ -48,8 +48,9 @@ subtitle = ""
   # color = "navy"
   
   # Background gradient.
-  # gradient_start = "DeepSkyBlue"
-  # gradient_end = "SkyBlue"
+  gradient_start = "#4bb4e3"
+  gradient_end = "#2b94c3"
+  
   
   # Background image.
   # image = "background.jpg"  # Name of image in `static/img/`.
@@ -65,7 +66,3 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
-
-{{% alert note %}}
-Quickly discover relevant content by [filtering publications]({{< ref "/publication/_index.md" >}}).
-{{% /alert %}}
