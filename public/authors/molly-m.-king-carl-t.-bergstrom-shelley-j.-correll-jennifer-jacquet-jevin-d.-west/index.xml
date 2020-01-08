@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Molly M. King, Carl T. Bergstrom, Shelley J. Correll, Jennifer Jacquet, Jevin D. West | Diversify Your Syllabi</title>
+    <link>/authors/molly-m.-king-carl-t.-bergstrom-shelley-j.-correll-jennifer-jacquet-jevin-d.-west/</link>
+      <atom:link href="/authors/molly-m.-king-carl-t.-bergstrom-shelley-j.-correll-jennifer-jacquet-jevin-d.-west/index.xml" rel="self" type="application/rss+xml" />
+    <description>Molly M. King, Carl T. Bergstrom, Shelley J. Correll, Jennifer Jacquet, Jevin D. West</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Molly M. King, Carl T. Bergstrom, Shelley J. Correll, Jennifer Jacquet, Jevin D. West</title>
+      <link>/authors/molly-m.-king-carl-t.-bergstrom-shelley-j.-correll-jennifer-jacquet-jevin-d.-west/</link>
+    </image>
+    
+    <item>
+      <title>An example journal article</title>
+      <link>/publication/journal-article/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/journal-article/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
