@@ -5,7 +5,7 @@
     <link>/publication_types/2/</link>
       <atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>2</title>
@@ -13,10 +13,19 @@
     </image>
     
     <item>
+      <title>Gendered Citation Patterns across Political Science and Social Science Methodology Fields</title>
+      <link>/publication/dion_politicalanal/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/dion_politicalanal/</guid>
+      <description>&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Gender Gaps in Self-Citation</title>
-      <link>/publication/journal-article/</link>
+      <link>/publication/king_socius/</link>
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/</guid>
+      <guid>/publication/king_socius/</guid>
       <description></description>
     </item>
     

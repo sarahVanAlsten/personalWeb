@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Social science | Diversify Your Syllabi</title>
+    <link>/tags/social-science/</link>
+      <atom:link href="/tags/social-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>Social science</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Social science</title>
+      <link>/tags/social-science/</link>
+    </image>
+    
+    <item>
+      <title>Gendered Citation Patterns across Political Science and Social Science Methodology Fields</title>
+      <link>/publication/dion_politicalanal/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/dion_politicalanal/</guid>
+      <description>&lt;hr&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
