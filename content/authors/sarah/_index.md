@@ -1,16 +1,16 @@
 ---
 # Display name
-name: Sarah Van Alsten
+name: Sarah Van Alsten, MPH
 
 # Username (this should match the folder name)
 authors:
 - sarah
 
 # Is this the primary user of the site?
-superuser: false
+superuser: true
 
 # Role/position
-role: Graduate Student
+role: Researcher
 
 # Organizations/Affiliations
 organizations:
@@ -40,9 +40,9 @@ education:
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "#contact" for contact widget.
 social:
-#- icon: envelope
-#  icon_pack: fas
-#  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
+- icon: envelope
+  icon_pack: fas
+  link: 'mailto:sarahvanalsten@gmail.com'  
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/alsten_van
@@ -56,7 +56,7 @@ social:
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
 #   icon_pack: ai
-#   link: files/cv.pdf
+#   link: files/cv_VanAlsten.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
@@ -64,7 +64,7 @@ email: ""
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-- Grad Students
+- 
 
 ---
 
