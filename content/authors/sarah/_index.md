@@ -17,9 +17,6 @@ organizations:
 - name: Washington University in St. Louis
   url: ""
 
-# Short bio (displayed in user profile at end of posts) optional
-bio: 
-
 interests:
 - Data Science
 - Epidemiology
@@ -52,11 +49,7 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/sarahVanAlsten
-# Link to a PDF of your resume/CV from the About widget.
-# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv_VanAlsten.pdf
+
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
@@ -64,7 +57,8 @@ email: ""
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-- 
+- Researchers
 
 ---
+I am an MPH candidate in Epidemiology and Biostatistics at Washington University in St. Louis with a background in Neuroscience and Genetics. I have experience in both psychiatric and chronic disease epidemiology, with particular emphases on eating disorders, diabetes, and comorbidity. I'm currently interested in the application of machine learning and big data to epidemiologic problems, as well as the development of new causal inference methods for big data. When I'm not in the lab or fiddling around in R, you can find me playing Settlers of Catan, running, cycling, or perfecting the art of latte making. Thanks for stopping by!
 
