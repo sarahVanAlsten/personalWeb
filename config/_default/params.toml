@@ -33,7 +33,7 @@ font_size = "L"
 #   For personal sites, choose "Person".
 #   For organizations and projects, choose from https://schema.org/Organization#subtypes
 #   E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
-site_type = "Project"
+site_type = "Person"
 
 # Local business type (optional)
 # If you entered "LocalBusiness" above, choose the type of business from https://schema.org/LocalBusiness#subtypes
@@ -75,7 +75,7 @@ privacy_pack = false
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
-edit_page = {repo_url = "https://github.com/diversify-your-syllabi/sarah_test_site", content_dir = "", repo_branch = "master", editable = {docs = false, page = false, post = false}}
+edit_page = {repo_url = "https://github.com/sarahVanAlsten/personalWeb", content_dir = "", repo_branch = "master", editable = {docs = false, page = false, post = false}}
 
 ############################
 ## Contact details
@@ -85,7 +85,7 @@ edit_page = {repo_url = "https://github.com/diversify-your-syllabi/sarah_test_si
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "harrisj@wustl.edu"
+email = "sarahvanalsten@gmail.com"
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
@@ -95,9 +95,9 @@ address = {street = "1 Brookings Drive", city = "St. Louis", region = "MO", post
 directions = "Part of the Brown School, Washington University in St. Louis"
 
 # Contact links
-#contact_links = [
-#  {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/Twitter"},
-#  ]
+contact_links = [
+  {icon = "twitter", icon_pack = "fab", name = "Follow Me!", link = "https://twitter.com/alsten_van"},
+  ]
 
 ############################
 ## Social
@@ -107,7 +107,7 @@ directions = "Part of the Brown School, Washington University in St. Louis"
 sharing_image = ""
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = "DYS_WUSTL"
+twitter = "alsten_van"
 
 ############################
 ## Regional Settings
@@ -185,14 +185,14 @@ plugins_js  = []
   #   0: Disabled
   #   1: Disqus (https://disqus.com)
   #   2: Commento (https://commento.io)
-  engine = 1
+  engine = 0
 
   # Which page types are commentable?
   commentable = {page = true, post = true, docs = true, project = true, publication = true, talk = true}
 
   # Configuration of Disqus.
   [comments.disqus]
-    shortname = "diversify-your-syllabi"  # Paste the shortname from your Disqus dashboard.
+    shortname = ""  # Paste the shortname from your Disqus dashboard.
     show_count = true  # Show comment count in page header? (true/false)
 
 ############################
