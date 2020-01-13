@@ -5,10 +5,10 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Diversify Your Syllabi"
+title = "Welcome!"
 
 # Image to Show with Messafe. Enter filename of an image in the `static/img/` folder.
-hero_media = "stem_graph.jpg"
+hero_media = "headshot.jpg"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -37,17 +37,17 @@ hero_media = "stem_graph.jpg"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "#about"
-  label = "Read More About The Site"
+  url = "#people"
+  label = "Learn more about me"
   
-#[cta_alt]
-#  url = "https://sourcethemes.com/academic/"
-#  label = "View Documentation"
+[cta_url]
+  url = "#publications"
+  label = "See my latest work"
+  
+
 
 # Note. An optional note to show underneath the links.
-[cta_note]
-  label = '<a href="https://ncsesdata.nsf.gov/datadownload/" data-repo="gcushen/hugo-academic">Source for graph: 2017 NSF NSCG</a>'
+#[cta_note]
+
 +++
 
-Females are **underrepresented** in computer science,
-math, and engineering fields.  It starts with the literature we read and cite.
