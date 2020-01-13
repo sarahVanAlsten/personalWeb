@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Sarah Van Alsten</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Sarah Van Alsten</title>
@@ -13,44 +13,39 @@
     </image>
     
     <item>
-      <title>Gendered Citation Patterns across Political Science and Social Science Methodology Fields</title>
-      <link>/publication/dion_politicalanal/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/dion_politicalanal/</guid>
-      <description>&lt;hr&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Effect of Gender in the Publication Patterns in Mathematics</title>
-      <link>/publication/milhaljevicbrandt_plosone/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/milhaljevicbrandt_plosone/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>The Gender Citation Gap in International Relations</title>
-      <link>/publication/maliniak_internationalorg/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/maliniak_internationalorg/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Writing technical content in Academic</title>
+      <title>Must Know Shortcuts, Functions, and Tricks in RStudio</title>
       <link>/post/writing-technical-content/</link>
-      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/post/writing-technical-content/</guid>
-      <description>&lt;p&gt;Academic is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.&lt;/p&gt;
+      <description>&lt;p&gt;One of my favorite things about R is the plethora of add-ons and extras that can make organizing, editing, and running code easier. Of course, that can come with drawbacks - a friend commented that they didn&#39;t like R &amp;quot;because there&#39;s always 20 ways to do the same thing!&amp;quot; Of course, that&#39;s exactly WHY I like it, so here&#39;s a short list of my favorite extras/functions/tips and tricks that will make your life easier. Note that these are all &lt;strong&gt;WINDOWS&lt;/strong&gt; shortcuts, Mac OS has different options.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Highlight your code snippets, take notes on math classes, and draw diagrams from textual representation.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;##Finding, Replacing, and Navigating.&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;On this page, you&#39;ll find some examples of the types of technical content that can be rendered with Academic.&lt;/p&gt;
+&lt;p&gt;Just like in Word, PDFs, or webpages, you can search and locate specific instances of text with &lt;strong&gt;Ctrl-F&lt;/strong&gt;. If you already have a piece of text highlighted when you do this, the &#39;find&#39; will autopopulate with that piece, saving you the trouble of retyping. You can also choose to limit your search to text in the same case, or search by regular expressions.&lt;/p&gt;
 
-&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+&lt;p&gt;Replace comes up in the same &#39;find&#39; taskbar. If you&#39;ve highlighted a portion of code, you can easily replace all instances just in that snippet by checking &#39;in selection&#39; and then then hitting the &#39;all&#39; button. This can be really handy if you&#39;re doing the same set of tasks on many objects with different names and need to be sure you&#39;ve changed all the named instances.&lt;/p&gt;
 
-&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+&lt;p&gt;Another useful way to organize code is using &lt;strong&gt;Ctrl-Shift-M&lt;/strong&gt;. This will bring up a dialog box in which you can type the main purpose of the code or part of the document you&#39;re working on, like &#39;Import Data&#39; or &#39;Run Logistic Regression&#39;. Then, use &lt;strong&gt;Ctrl-PgUp&lt;/strong&gt; or &lt;strong&gt;Ctrl-PgDn&lt;/strong&gt; to easily navigate directly to previous or later sections.&lt;/p&gt;
+
+&lt;p&gt;One more: navigating the cursor to the beginning (&lt;strong&gt;Home&lt;/strong&gt;) or end (&lt;strong&gt;End&lt;/strong&gt;) of line.&lt;/p&gt;
+
+&lt;p&gt;##Selection&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;To highlight the entire current line: &lt;strong&gt;Ctrl-Shift-L&lt;/strong&gt;.
+To highlight all code to a matching parenthes or bracket, use &lt;strong&gt;Ctrl-Shift-Alt-E&lt;/strong&gt;.
+To select all code from current to start/end, use &lt;strong&gt;Ctrl+Shift+Home/End&lt;/strong&gt; or &lt;strong&gt;Shift+Alt+Up/Down&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;##Running Code&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;To run current line (or whatever is in your highlight snippet), &lt;strong&gt;Ctrl-Enter&lt;/strong&gt;. You can also go up to the &#39;code&#39; tab, then select &#39;run selected line&#39; but I find it&#39;s faster to do via keyboard. To run the whole document up to your current cursor, use &lt;strong&gt;Ctrl-Alt-B&lt;/strong&gt;, or from current line to then end use &lt;strong&gt;Ctrl-Alt-E&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;##Commenting&lt;br&gt;
+I comment out lines frequently. &lt;strong&gt;Ctrl-Shift-C&lt;/strong&gt; will comment out the current line or selection.&lt;/p&gt;
+
+&lt;p&gt;##Inserting Helpful Operators&lt;br&gt;
+The pipe operator, %&amp;gt;%, is a useful function built in the magittr package. Insert one with &lt;strong&gt;Ctrl-Shift-M&lt;/strong&gt;. Also, in R the assignment operator, &amp;lt;- , can be inserted with &lt;strong&gt;Alt- -&lt;/strong&gt; (that&#39;s alt and the minus key).&lt;/p&gt;
+
+&lt;p&gt;These are NOT the only available shortcuts, for a more complete list see this &lt;a href=&#34;https://rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf&#34;&gt;cheatsheet&lt;/a&gt; . You can also create/customize your own personal shortcuts by going to &#39;Tools&#39; --&amp;gt; &#39;Modify Keyboard Shortcuts&#39;.&lt;/p&gt;
 
 &lt;p&gt;Academic supports a Markdown extension for highlighting code syntax. You can enable this feature by toggling the &lt;code&gt;highlight&lt;/code&gt; option in your &lt;code&gt;config/_default/params.toml&lt;/code&gt; file.&lt;/p&gt;
 
@@ -249,6 +244,31 @@ gantt
     </item>
     
     <item>
+      <title>Gendered Citation Patterns across Political Science and Social Science Methodology Fields</title>
+      <link>/publication/dion_politicalanal/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/dion_politicalanal/</guid>
+      <description>&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Effect of Gender in the Publication Patterns in Mathematics</title>
+      <link>/publication/milhaljevicbrandt_plosone/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/milhaljevicbrandt_plosone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Gender Citation Gap in International Relations</title>
+      <link>/publication/maliniak_internationalorg/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/maliniak_internationalorg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Display Jupyter Notebooks with Academic</title>
       <link>/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
@@ -413,56 +433,6 @@ date: 2019-09-01
 &lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
 &lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>
-
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

@@ -2,6 +2,6 @@
 header:
   caption: ""
   image: ""
-title: Literature and Research Resources
+title: Literature
 view: 4
 ---
