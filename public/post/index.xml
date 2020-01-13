@@ -13,13 +13,13 @@
     </image>
     
     <item>
-      <title>Must Know Shortcuts, Functions, and Tricks in RStudio</title>
+      <title>My Favorite Shortcuts and Tricks in RStudio</title>
       <link>/post/writing-technical-content/</link>
       <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/post/writing-technical-content/</guid>
       <description>&lt;p&gt;One of my favorite things about R is the plethora of add-ons and extras that can make organizing, editing, and running code easier. Of course, that can come with drawbacks - a friend commented that they didn&#39;t like R &amp;quot;because there&#39;s always 20 ways to do the same thing!&amp;quot; Of course, that&#39;s exactly WHY I like it, so here&#39;s a short list of my favorite extras/functions/tips and tricks that will make your life easier. Note that these are all &lt;strong&gt;WINDOWS&lt;/strong&gt; shortcuts, Mac OS has different options.&lt;/p&gt;
 
-&lt;p&gt;##Finding, Replacing, and Navigating.&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&#34;finding-replacing-and-navigatingbr&#34;&gt;Finding, Replacing, and Navigating.&lt;br&gt;&lt;/h3&gt;
 
 &lt;p&gt;Just like in Word, PDFs, or webpages, you can search and locate specific instances of text with &lt;strong&gt;Ctrl-F&lt;/strong&gt;. If you already have a piece of text highlighted when you do this, the &#39;find&#39; will autopopulate with that piece, saving you the trouble of retyping. You can also choose to limit your search to text in the same case, or search by regular expressions.&lt;/p&gt;
 
@@ -29,215 +29,29 @@
 
 &lt;p&gt;One more: navigating the cursor to the beginning (&lt;strong&gt;Home&lt;/strong&gt;) or end (&lt;strong&gt;End&lt;/strong&gt;) of line.&lt;/p&gt;
 
-&lt;p&gt;##Selection&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&#34;selectionbr&#34;&gt;Selection&lt;br&gt;&lt;/h3&gt;
 
 &lt;p&gt;To highlight the entire current line: &lt;strong&gt;Ctrl-Shift-L&lt;/strong&gt;.
 To highlight all code to a matching parenthes or bracket, use &lt;strong&gt;Ctrl-Shift-Alt-E&lt;/strong&gt;.
 To select all code from current to start/end, use &lt;strong&gt;Ctrl+Shift+Home/End&lt;/strong&gt; or &lt;strong&gt;Shift+Alt+Up/Down&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;##Running Code&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&#34;running-codebr&#34;&gt;Running Code&lt;br&gt;&lt;/h3&gt;
 
 &lt;p&gt;To run current line (or whatever is in your highlight snippet), &lt;strong&gt;Ctrl-Enter&lt;/strong&gt;. You can also go up to the &#39;code&#39; tab, then select &#39;run selected line&#39; but I find it&#39;s faster to do via keyboard. To run the whole document up to your current cursor, use &lt;strong&gt;Ctrl-Alt-B&lt;/strong&gt;, or from current line to then end use &lt;strong&gt;Ctrl-Alt-E&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;##Commenting&lt;br&gt;
-I comment out lines frequently. &lt;strong&gt;Ctrl-Shift-C&lt;/strong&gt; will comment out the current line or selection.&lt;/p&gt;
+&lt;h3 id=&#34;commentingbr&#34;&gt;Commenting&lt;br&gt;&lt;/h3&gt;
 
-&lt;p&gt;##Inserting Helpful Operators&lt;br&gt;
-The pipe operator, %&amp;gt;%, is a useful function built in the magittr package. Insert one with &lt;strong&gt;Ctrl-Shift-M&lt;/strong&gt;. Also, in R the assignment operator, &amp;lt;- , can be inserted with &lt;strong&gt;Alt- -&lt;/strong&gt; (that&#39;s alt and the minus key).&lt;/p&gt;
+&lt;p&gt;I comment out lines frequently. &lt;strong&gt;Ctrl-Shift-C&lt;/strong&gt; will comment out the current line or selection.&lt;/p&gt;
+
+&lt;h3 id=&#34;knittingbr&#34;&gt;Knitting&lt;br&gt;&lt;/h3&gt;
+
+&lt;p&gt;If using RMarkdown, knit the document with &lt;strong&gt;Ctrl-Shift-K&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;inserting-helpful-operatorsbr&#34;&gt;Inserting Helpful Operators&lt;br&gt;&lt;/h3&gt;
+
+&lt;p&gt;The pipe operator, %&amp;gt;%, is a useful function built in the magittr package. Insert one with &lt;strong&gt;Ctrl-Shift-M&lt;/strong&gt;. Also, in R the assignment operator, &amp;lt;- , can be inserted with &lt;strong&gt;Alt- -&lt;/strong&gt; (that&#39;s alt and the minus key).&lt;/p&gt;
 
 &lt;p&gt;These are NOT the only available shortcuts, for a more complete list see this &lt;a href=&#34;https://rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf&#34;&gt;cheatsheet&lt;/a&gt; . You can also create/customize your own personal shortcuts by going to &#39;Tools&#39; --&amp;gt; &#39;Modify Keyboard Shortcuts&#39;.&lt;/p&gt;
-
-&lt;p&gt;Academic supports a Markdown extension for highlighting code syntax. You can enable this feature by toggling the &lt;code&gt;highlight&lt;/code&gt; option in your &lt;code&gt;config/_default/params.toml&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;```python
-import pandas as pd
-data = pd.read_csv(&amp;quot;data.csv&amp;quot;)
-data.head()
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pandas as pd
-data = pd.read_csv(&amp;quot;data.csv&amp;quot;)
-data.head()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;math&#34;&gt;Math&lt;/h3&gt;
-
-&lt;p&gt;Academic supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the &lt;code&gt;math&lt;/code&gt; option in your &lt;code&gt;config/_default/params.toml&lt;/code&gt; file and adding &lt;code&gt;markup: mmark&lt;/code&gt; to your page front matter.&lt;/p&gt;
-
-&lt;p&gt;To render &lt;em&gt;inline&lt;/em&gt; or &lt;em&gt;block&lt;/em&gt; math, wrap your LaTeX math with &lt;code&gt;$$...$$&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Example &lt;strong&gt;math block&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;$$\gamma_{n} = \frac{ 
-\left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T 
-\left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}
-{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}\]&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Example &lt;strong&gt;inline math&lt;/strong&gt; &lt;code&gt;$$\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2$$&lt;/code&gt; renders as &lt;span  class=&#34;math&#34;&gt;\(\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2\)&lt;/span&gt; .&lt;/p&gt;
-
-&lt;p&gt;Example &lt;strong&gt;multi-line math&lt;/strong&gt; using the &lt;code&gt;\\&lt;/code&gt; math linebreak:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;$$f(k;p_0^*) = \begin{cases} p_0^* &amp;amp; \text{if }k=1, \\
-1-p_0^* &amp;amp; \text {if }k=0.\end{cases}$$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[f(k;p_0^*) = \begin{cases} p_0^* &amp; \text{if }k=1, \\
-1-p_0^* &amp; \text {if }k=0.\end{cases}\]&lt;/span&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;diagrams&#34;&gt;Diagrams&lt;/h3&gt;
-
-&lt;p&gt;Academic supports a Markdown extension for diagrams. You can enable this feature by toggling the &lt;code&gt;diagram&lt;/code&gt; option in your &lt;code&gt;config/_default/params.toml&lt;/code&gt; file or by adding &lt;code&gt;diagram: true&lt;/code&gt; to your page front matter.&lt;/p&gt;
-
-&lt;p&gt;An example &lt;strong&gt;flowchart&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;```mermaid
-graph TD;
-  A--&amp;gt;B;
-  A--&amp;gt;C;
-  B--&amp;gt;D;
-  C--&amp;gt;D;
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;graph TD;
-  A--&amp;gt;B;
-  A--&amp;gt;C;
-  B--&amp;gt;D;
-  C--&amp;gt;D;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;An example &lt;strong&gt;sequence diagram&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;```mermaid
-sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice-&amp;gt;John: Hello John, how are you?
-  loop Healthcheck
-      John-&amp;gt;John: Fight against hypochondria
-  end
-  Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail...
-  John--&amp;gt;Alice: Great!
-  John-&amp;gt;Bob: How about you?
-  Bob--&amp;gt;John: Jolly good!
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice-&amp;gt;John: Hello John, how are you?
-  loop Healthcheck
-      John-&amp;gt;John: Fight against hypochondria
-  end
-  Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail...
-  John--&amp;gt;Alice: Great!
-  John-&amp;gt;Bob: How about you?
-  Bob--&amp;gt;John: Jolly good!
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;An example &lt;strong&gt;Gantt diagram&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;```mermaid
-gantt
-  dateFormat  YYYY-MM-DD
-  section Section
-  A task           :a1, 2014-01-01, 30d
-  Another task     :after a1  , 20d
-  section Another
-  Task in sec      :2014-01-12  , 12d
-  another task      : 24d
-```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34;&gt;gantt
-  dateFormat  YYYY-MM-DD
-  section Section
-  A task           :a1, 2014-01-01, 30d
-  Another task     :after a1  , 20d
-  section Another
-  Task in sec      :2014-01-12  , 12d
-  another task      : 24d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;todo-lists&#34;&gt;Todo lists&lt;/h3&gt;
-
-&lt;p&gt;You can even write your todo lists in Academic too:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;- [x] Write math example
-- [x] Write diagram example
-- [ ] Do something else
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34;&gt; Write math example&lt;/li&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked=&#34;&#34; disabled=&#34;&#34;&gt; Write diagram example&lt;/li&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;&gt; Do something else&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;tables&#34;&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Represent your data in tables:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;First Header&lt;/th&gt;
-&lt;th&gt;Second Header&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Content Cell&lt;/td&gt;
-&lt;td&gt;Content Cell&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Content Cell&lt;/td&gt;
-&lt;td&gt;Content Cell&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&#34;asides&#34;&gt;Asides&lt;/h3&gt;
-
-&lt;p&gt;Academic supports a Markdown extension for asides, also referred to as &lt;em&gt;notices&lt;/em&gt; or &lt;em&gt;hints&lt;/em&gt;. By prefixing a paragraph with &lt;code&gt;A&amp;gt;&lt;/code&gt;, it will render as an aside. You can enable this feature by adding &lt;code&gt;markup: mmark&lt;/code&gt; to your page front matter, or alternatively using the &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/#alerts&#34;&gt;&lt;em&gt;Alert&lt;/em&gt; shortcode&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;A&amp;gt; A Markdown aside is useful for displaying notices, hints, or definitions to your readers.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;renders as&lt;/p&gt;
-
-&lt;aside&gt;
-&lt;p&gt;A Markdown aside is useful for displaying notices, hints, or definitions to your readers.&lt;/p&gt;
-&lt;/aside&gt;
 
 &lt;h3 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
 </description>
