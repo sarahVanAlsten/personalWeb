@@ -9,12 +9,12 @@
   weight = 4
 
 [[main]]
-  name = "Topic Areas"
+  name = "Research By Topic"
   url = "#projects"
   weight = 2
 
 [[main]]
-  name = "Literature"
+  name = "Latest Research"
   url = "#featured"
   weight = 3
 

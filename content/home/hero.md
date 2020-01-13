@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Welcome!"
+title = "Welcome! Thanks for visiting."
 
 # Image to Show with Messafe. Enter filename of an image in the `static/img/` folder.
 hero_media = "headshot.jpg"

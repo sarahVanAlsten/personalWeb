@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 65  # Order that this section will appear.
 
-title = "Topic Areas"
+title = "Search by Topic"
 subtitle = ""
 
 [content]
@@ -27,66 +27,31 @@ subtitle = ""
   [[content.filter_button]]
     name = "All"
     tag = "*"
-    
-  [[content.filter_button]]
-    name = "ANOVA"
-    tag = "ANOVA"
-    
-  [[content.filter_button]]
-    name = "Central Limit Theorom"
-    tag = "Central Limit Theorom"
-    
-  [[content.filter_button]]
-    name = "Chi-Square"
-    tag = "Chi-Square"   
-    
-  [[content.filter_button]]
-    name = "Correlation"
-    tag = "Correlation"
-    
-  [[content.filter_button]]
-    name = "Cox Regression"
-    tag = "Cox Regression" 
 
   [[content.filter_button]]
-    name = "Latent Class Analysis"
-    tag = "Latent Class Analysis"
+    name = "Diabetes"
+    tag = "Diabetes"   
+    
+  [[content.filter_button]]
+    name = "Epidemiology"
+    tag = "Epidemiology"
+        
+  [[content.filter_button]]
+    name = "Methods"
+    tag = "Methods"
+    
+  [[content.filter_button]]
+    name = "Psychiatric"
+    tag = "Psychiatric" 
+        
+  [[content.filter_button]]
+    name = "R"
+    tag = "R"
+    
+  [[content.filter_button]]
+    name = "Sequence Analysis"
+    tag = "Sequence Analysis"
 
-  [[content.filter_button]]
-    name = "Linear Regression"
-    tag = "Linear Regression"
-
-  [[content.filter_button]]
-    name = "Logistic Regression (Binary)"
-    tag = "Logistic Regression (Binary)"
-    
-  [[content.filter_button]]
-    name = "Logistic Regression (Multinomial)"
-    tag = "Logistic Regression (Multinomial)"
-
-  [[content.filter_button]]
-    name = "Logistic Regression (Ordinal)"
-    tag = "Logistic Regression (Ordinal)"
-    
-  [[content.filter_button]]
-    name = "Negative Binomial Regression"
-    tag = "Negative Binomial Regression"
-    
-  [[content.filter_button]]
-    name = "Poisson Regression"
-    tag = "Poisson Regression"  
-
-  [[content.filter_button]]
-    name = "Power"
-    tag = "Power"  
-    
-  [[content.filter_button]]
-    name = "Sampling"
-    tag = "Sampling"
-    
-  [[content.filter_button]]
-    name = "T-Test"
-    tag = "T-Test"
     
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
