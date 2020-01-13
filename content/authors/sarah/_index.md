@@ -43,6 +43,9 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/alsten_van
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/sarahvanalsten/
 #- icon: google-scholar
 #  icon_pack: ai
 #  link: 
