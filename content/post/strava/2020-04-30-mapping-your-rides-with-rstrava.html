@@ -1,0 +1,210 @@
+---
+title: Mapping Your Rides With rStrava
+author: Sarah Van Alsten
+date: '2020-04-30'
+slug: mapping-your-rides-with-rstrava
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-04-30T17:21:05-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>I’ve been a runner since middle school, and though I think it’s fair to say I peaked in college (after my single completed half marathon my pace and distance have diminished considerably), I’m trying to get back into running and biking more regularly. With that in mind, I started tracking my training on an app called Strava, which is pretty awesome- it provides you with splits, mileage, pace, and other metrics that might be useful in helping you adjust your training volume. Moreover, it fosters a bit of competitve spirit by comparing your performance on certain segments of a route to other frequent users.</p>
+<p>But on to today’s topic. I was very excited to learn that someone had gone about creating a package that lets you work with Strava data in R, so here’s a gentle introduction.</p>
+<div id="part-1.-prerequisites" class="section level1">
+<h1>Part 1. Prerequisites</h1>
+<div id="installopen-up-necessary-packages.-note-not-all-of-them-are-on-cran-yet" class="section level2">
+<h2>1. Install/open up necessary packages. Note not all of them are on CRAN yet</h2>
+<pre class="r"><code>devtools::install_github(&#39;fawda123/rStrava&#39;)
+devtools::install_github(&#39;dgrtwo/gganimate&#39;)
+devtools::install_github(&#39;thomasp85/transformr&#39;)
+
+library(rStrava) 
+library(httr)
+library(gganimate)  
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(sp)
+library(ggmap)
+library(raster)
+library(mapproj)</code></pre>
+</div>
+<div id="sign-up-for-a-strava-account-and-create-a-personal-strava-api" class="section level2">
+<h2>2. Sign up for a Strava account and create a personal Strava API</h2>
+<p>If you don’t have an account already, one can be created <a href="https://www.strava.com/">here</a>. Once you sign up and log in, create the personal API by going <a href="https://developers.strava.com/">here</a> and selecting ‘Create and Manage Your App’. You’ll have to give your app a name (I just called mine ‘R’) and provide an image (I just posted a photo of myself), but then you should be all set. <a href="https://developers.strava.com/docs/getting-started/">Additional details about the API are available here</a></p>
+<p>Once you have that done, you need to set up an authentication token for the API in R. You can change the
+<code>app_scope</code> and <code>cache</code> arguments, which deal with which activities you allow to be read in and whether to save the authentication token in your R history for future use. It’ll look like this:
+<img src="\img\rstrava.PNG" /></p>
+<pre class="r"><code># Strava key
+app_name &lt;- &#39;xxxx&#39; #this is where I&#39;d put &#39;R&#39;; title assigned by you
+app_client_id &lt;- &#39;xxxxx&#39; #something that Strava assigns to your app (2 in picture)
+app_secret &lt;- &#39;&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;&#39; #also assigned by  (3 in picture)
+
+# create authentication token
+strava_token &lt;- httr::config(token = strava_oauth(app_name, app_client_id, app_secret,
+                                                  app_scope = &quot;activity:read_all&quot;,
+                                                  cache = TRUE))
+
+#in future sessions, load your token in like this after you&#39;ve cached it
+strava_token &lt;- httr::config(token = readRDS(&#39;.httr-oauth&#39;)[[1]])</code></pre>
+</div>
+<div id="sign-up-for-a-google-maps-api." class="section level2">
+<h2>3. Sign up for a Google Maps API.</h2>
+<p>This is also mainly free, although you have a limit on the number of requests you can put through.
+The site to sign up is <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a>. Follow the get started instructions, then, once you have it set up, find your unique API key by going to APIs -&gt; Details of the elevation API -&gt; Credentials</p>
+<p>Now, register that API key in R.</p>
+<pre class="r"><code># Google elevation API key
+GoogleAPI &lt;- &#39;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#39;
+
+# save the key, do only once
+cat(&quot;google_key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n&quot;,
+    file=file.path(normalizePath(&quot;~/&quot;), &quot;.Renviron&quot;),
+    append=TRUE)
+
+# retrieve the key, restart R if not found
+mykey &lt;- Sys.getenv(&quot;google_key&quot;)
+register_google(mykey)</code></pre>
+</div>
+</div>
+<div id="part-2.-mapping-rstrava-functions" class="section level1">
+<h1>Part 2. Mapping + rStrava Functions</h1>
+<p>The <code>rStrava</code> package lets you download 3 main types of data: data about the athlete (you), data about the activities you’ve done (runs, bikes, walks, etc.), and data about activity streams (essentially more detailed activity data).</p>
+<div id="athlete-data" class="section level2">
+<h2>Athlete Data</h2>
+<p>You can get an athlete’s data by providing their unique Strava identifier to this function. You can find the identifier by going to Strava, finding the athlete (you) via the ‘atlethe’ page, then clicking in the web address bar. The numbers at the end of the web address are your ID. Note that depending on privacy settings, you may not be able to get data for every user, but you should be able to access data about yourself. Ordinarly, I just use this as a check that I’ve picked the right user to get activities for.</p>
+<pre class="r"><code>me &lt;- get_athlete(stoken = strava_token,
+                     id = &#39;xxxxxxxx&#39;)
+
+head(me)</code></pre>
+</div>
+<div id="activity-data" class="section level2">
+<h2>Activity Data</h2>
+<p>Perhaps more interestingly, you can also access the activities you’ve completed. You need two main functions, <code>get_activity_list</code> which downloads activities, and <code>compile_activities</code> which tidies them into a more user-friendly data frame.</p>
+<p>Depending on how frequently you’ve used Strava, you may only want to select a few recent activities, which is where the <code>acts</code> argument comes in. Here I’ve just picked my 20 most recent rides + runs, keeping only those with a recorded distance of 2 mi or greater. If you prefer to use the metric system, you can also specify <code>units = "metric"</code>, which is the default.</p>
+<pre class="r"><code>#get routes for yourself
+routes &lt;- get_activity_list(stoken = strava_token)
+
+#make those routes into a useable data frame
+act_data &lt;- compile_activities(routes, acts = 1:20, units = &quot;imperial&quot;) %&gt;% 
+  filter(distance &gt; 2)</code></pre>
+<p>To see where you most commonly complete your activities, use <code>get_heat_map</code>.</p>
+<pre class="r"><code>get_heat_map(routes, key = mykey, col = &#39;darkgreen&#39;, size = 2, distlab = F, f = 0.4)</code></pre>
+<p><img src="\img\get_heat_map.PNG" /></p>
+<p>To see the elevation of your activity, use <code>get_elev_prof</code>. It defaults to the most recent activity you’ve completed if you pass it the result of a <code>get_activity_list</code>, or several of the routes if you pass specify those IDs when you compile. You can also choose to map for a specific activity by specifying the ‘id’ argument in
+<code>compile_activities</code></p>
+<pre class="r"><code>#most recent activity
+get_elev_prof(routes, key = mykey, units = &#39;imperial&#39;)
+
+
+#4 most recent activities w/ map data available
+get_activity_list(stoken) %&gt;%
+  compile_activities(1:4) %&gt;%
+  get_elev_prof(key = mykey)
+
+
+#activity w/ ID 3221699709
+get_activity_list(stoken) %&gt;%
+  compile_activities(id = &#39;3221699709&#39;) %&gt;%
+  get_elev_prof(key = mykey)</code></pre>
+<p><img src="\img\elev_prof1.PNG" />
+<img src="\img\elev_prof2.PNG" />
+<img src="\img\elev_prof3.PNG" /></p>
+<p>You can also add elevation and gradients to a heatmap.</p>
+<pre class="r"><code># plot % gradient along a single ride (no gradient)
+get_heat_map(routes, id = &#39;3221699709&#39;, alpha = 1, add_elev = T, f = 0.3,
+             distlab = F, as_grad = F, key = mykey, size = 2, 
+             col = &#39;Spectral&#39;, expand = 5, maptype = &#39;satellite&#39;, units = &#39;imperial&#39;)
+
+# plot % gradient along a single ride
+get_heat_map(routes, id = &#39;3221699709&#39;, alpha = 1, add_elev = T, f = 0.3,
+             distlab = F, as_grad = T, key = mykey, size = 2, 
+             col = &#39;Spectral&#39;, expand = 5, maptype = &#39;satellite&#39;, units = &#39;imperial&#39;)</code></pre>
+<p><img src="\img\elev_heatmap.PNG" />
+<img src="\img\grad_heatmap.PNG" /></p>
+<p>Finally, for split pace</p>
+<pre class="r"><code># plots for most recent activity
+plot_spdsplits(routes, stoken = stoken, id = &#39;3221699709&#39;, units = &#39;imperial&#39;)</code></pre>
+<p><img src="\img\speed_split.PNG" /></p>
+</div>
+<div id="stream-data" class="section level2">
+<h2>Stream Data</h2>
+<p>For even more information, you’ll probably want the activity streams. These add things like location, temperature, cadence, and more details about your pace and splits. For simplicity, I’m just picking one activity to look at.</p>
+<pre class="r"><code>stream &lt;- get_activity_streams(act_data = routes, stoken = strava_token,
+                               id = &#39;3221699709&#39;, units = &quot;imperial&quot;)
+
+
+stream &lt;- get_activity_streams(act_data = routes, stoken = stoken,
+                               id = &#39;3221699709&#39;, units = &quot;imperial&quot;)</code></pre>
+<p>You can plot streams using the same plotting functions as activity data (e.g. heat maps, speed splits). The output is essentially the same as for plotting activity data. Here, I’ve changed the heatmap to show speed instead of gradient.</p>
+<pre class="r"><code>#plot speed on heat map
+get_heat_map(stream, alpha = 1, filltype = &#39;speed&#39;,
+             f = 0.3, size = 2, col = &#39;Spectral&#39;, distlab = F)
+
+
+# stream splits
+plot_spdsplits(stream, stoken = strava_token, units = &#39;imperial&#39;)</code></pre>
+<p><img src="\img\speed_heatmap.PNG" />
+<img src="\img\speed_split.PNG" /></p>
+</div>
+<div id="part-3.-animate-it." class="section level2">
+<h2>Part 3. Animate it.</h2>
+<p>The maps are pretty cool to visualize like this, but I wanted to see if I could make them even more fun and add some animation. You’ll need to use the streams data for this, since it incorporates location at specific times. Another thing to note here is you’ll get weird errors if any of the downloaded activity doesn’t have an associated stream- this happens if you have a manual upload or complete a stationary activity (such as strength training), for instance. The best workaround is to manually specify certain <code>acts</code> so it will skip over the unknown streamed activity.</p>
+<pre class="r"><code>#download streams
+all.acts &lt;- 
+  get_activity_list(stoken = strava_token) %&gt;%
+  get_activity_streams(stoken = strava_token, acts = 3:20)
+
+#filter to a single ride
+single_ride &lt;- all.acts %&gt;%
+  unnest(cols = names(all.acts)) %&gt;%
+  group_by(id) %&gt;%
+  filter(id == 3373598662)</code></pre>
+<p>Mapping in R requires you to specify exactly where you want the map to focus. This is called a “bounding box” (bbox for short), and we can get Google API to do that for us with the combination of <code>get_map</code> and <code>make_bbox</code>. We pass it the latitude and longitude that are available in the streams, and it does the work for us.</p>
+<pre class="r"><code>#create a background map base on which we will plot
+map_base &lt;- get_map(location = make_bbox(lng, lat,
+                                         data = single_ride,
+                                         f = 0.1),
+                    source = &#39;google&#39;, maptype = &#39;terrain&#39;)</code></pre>
+<p>Next, we use that map as the base to trace out our route. We can color the path in any number of different ways - speed, elevation, grade, distance- I’ve chosen speed here. The coordinates again are our latitude and longitude. To animate the map, we use <code>gganimate</code> are reveal our data gradually over time. Then we can save the animation as a GIF.</p>
+<pre class="r"><code>#make the animation of the single ride
+ggmap(map_base) +
+  geom_path(aes(x = lng, y = lat, color = velocity_smooth), size = 2,
+            data = single_ride) +
+  scale_color_distiller(&#39;Speed&#39;, palette = &#39;Spectral&#39;) +
+  coord_cartesian()+
+  theme_nothing() +
+  ggtitle(&quot;Forest Park Ride&quot;) +
+  gganimate::transition_reveal(time)
+
+#save the animation as a GIF
+gganimate::anim_save(&quot;strava_ride.gif&quot;)</code></pre>
+<p><img src="\img\strava_ride.gif" /></p>
+<p>What if we want to plot multiple rides? Actually, that’s pretty simple to do as well. Just add a group aesthetic to <code>geom_path</code>. To make it easier to see, I also colored by ride ID.</p>
+<pre class="r"><code>all_rides &lt;- all.acts %&gt;%
+  unnest(cols = names(all.acts)) %&gt;%
+  group_by(id)
+
+ggmap(map_base) +
+  geom_path(aes(x = lng, y = lat, color = factor(id), group = factor(id)), size = 2,
+            data = all_rides) +
+  coord_cartesian()+
+  theme_nothing() +
+  ggtitle(&quot;Forest Park Ride&quot;) +
+  gganimate::transition_reveal(time)
+
+#save the animation as a GIF
+gganimate::anim_save(&quot;strava_rides.gif&quot;)</code></pre>
+<p><img src="\img\strava_rides.gif" /></p>
+</div>
+</div>
