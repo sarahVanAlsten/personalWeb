@@ -5,12 +5,184 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Sarah Van Alsten</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 30 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 02 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Sarah Van Alsten</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Rendering Audio &#43; Animations in R</title>
+      <link>/post/rendering-audio-animations-in-r/</link>
+      <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/rendering-audio-animations-in-r/</guid>
+      <description>
+
+
+&lt;p&gt;Today I’ll give a brief introduction as to how to create simple audio/music files in R without relying on importation from other software or downloads from APIs. Of course, you won’t be able to use voice-overs or words, but it’s still quite empowering to know how.&lt;/p&gt;
+&lt;div id=&#34;step-1.-installopen-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1. Install/open packages&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr) #for data management&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     filter, lag&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     intersect, setdiff, setequal, union&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(audio) #for rendering audio&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;audio&amp;#39; was built under R version 3.6.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2) #for plot&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gganimate) #to animate&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;gganimate&amp;#39; was built under R version 3.6.3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Due to &lt;strong&gt;potential&lt;/strong&gt; copyright issues, I’ll demonstrate using two songs available in the public domain: “Happy Birthday to You” and “Victors” (the University of Michigan fightsong. Go Blue!). The first is shorter and simpler, so we’ll start there.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2.-make-music&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2. Make music&lt;/h2&gt;
+&lt;p&gt;All you really need to know to recreate any song are 1) the notes (e.g. A#, B, C) and 2) the duration each note is played (e.g. eighth-note, quarter note). You can find these on sheet music, though they will have to be transcribed by hand [at least as far as I know. If you have a way to work with sheet music I’d love to hear it]. First, we assign each note letter a numeric value, then specify what the notes (pitch) are and the duration (duration) each is played. Then bind together in a data frame.
+Note that we assume we’re generally in the 4th octave unless otherwise specifed by a 5 appended to the end of a letter.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;notes &amp;lt;- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 10)
+
+pitch &amp;lt;- &amp;quot;D D E D G F# D D E D A G D D D5 B G F# E C5 C5 B G A G&amp;quot;
+
+duration &amp;lt;- c(rep(c(0.75, 0.25, 1, 1, 1, 2), 2),
+              0.75, 0.25, 1, 1, 1, 1, 1, 0.75, 0.25, 1, 1, 1, 2)
+
+bday &amp;lt;- tibble(pitch = strsplit(pitch, &amp;quot; &amp;quot;)[[1]],
+                   duration = duration)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have to make these come to life as actual sound waves. You can read more about wave properties &lt;a href=&#34;http://digitalsoundandmusic.com/2-1-2-properties-of-sine-waves/&#34;&gt;here&lt;/a&gt;, but for now just recognize that we have to translate the pitch into a frequency, which we will then later use to create a sine wave for playing.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bday &amp;lt;- bday %&amp;gt;%
+  #if we added a &amp;#39;5&amp;#39; for 5th octave, it will have more characters- thus, find octave like this
+  mutate(octave = substring(pitch, nchar(pitch)) %&amp;gt;%
+           {suppressWarnings(as.numeric(.))} %&amp;gt;%
+           ifelse(is.na(.), 4, .),
+      #get actually string value of the note
+         note = notes[substr(pitch, 1, 1)],
+      #add 1 if it&amp;#39;s a sharp (half-step up) or subtract 1 if it&amp;#39;s a flat (b) 
+         note = note + grepl(&amp;quot;#&amp;quot;, pitch) -
+           grepl(&amp;quot;b&amp;quot;, pitch) + octave * 12 +
+           12 * (note &amp;lt; 3),
+      #translate into frequency
+         freq = 2 ^ ((note - 60) / 12) * 440)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we can play with how fast and high pitched we want to play the song at. There’s no exact science here- play around with whatever ends up sounding good. The tempo and sampling rate then control the properties of the sine wave.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#set a speed to play at
+tempo &amp;lt;- 120
+
+#set sampling rate (this controls how high pitched i)
+sample_rate &amp;lt;- 44100
+
+#function to create a sine wave
+make_sine &amp;lt;- function(freq, duration) {
+  wave &amp;lt;- sin(seq(0, duration / tempo * 60, 1 / sample_rate) *
+                freq * 2 * pi)
+  fade &amp;lt;- seq(0, 1, 50 / sample_rate)
+  wave * c(fade, rep(1, length(wave) - 2 * length(fade)), rev(fade))
+}
+
+#translate pitches into sine waves
+bday_wave &amp;lt;-
+  mapply(make_sine, bday$freq, bday$duration) %&amp;gt;%
+  do.call(&amp;quot;c&amp;quot;, .)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, play the music.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;play(bday_wave)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you want to save your audio file, you can do so with the &lt;code&gt;save.wave&lt;/code&gt; function&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;save.wave(bday_wave, &amp;quot;bday.wav&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;more-complicated-music&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;More Complicated Music&lt;/h2&gt;
+&lt;p&gt;One component that isn’t easily addressed by the above operations is rests- the period when there is a short break between notes. My go-to workaround has been to create several separate smaller strings of audio, split at the places where a rest would be, then play them all together at the end with a specified &lt;code&gt;Sys.sleep()&lt;/code&gt; time to time the playback correctly. Again, it’s not entirely feasible when you have a lot of rests or a long piece of music, but it works for smaller jobs.&lt;/p&gt;
+&lt;p&gt;Here’s ‘Hail to the Victors’&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Notice I adjusted these a bit from before. You can play with spacing to get different
+#sounds out of your notes, just be sure to preserve the general alphabetical order
+notes &amp;lt;- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 9)
+
+pitch2 &amp;lt;- &amp;quot;C A B C A B C D B C D B C D E F F C C D A B C B A E&amp;quot;
+pitch3 &amp;lt;- &amp;quot;C A B C A B C D B C D B C D E F F C C D A B C E C B A&amp;quot;
+duration2 &amp;lt;- c(4, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 4, 3, .5, .5, 2, 2, 2, 2, 4, 2, 2, 5)
+duration3 &amp;lt;- c(4, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 4, 3, .5, .5, 2, 2, 2, 2, 2, 2, 3, 1, 5)
+position &amp;lt;- 1:length(pitch2)
+position2 &amp;lt;- 1:length(pitch3)
+
+song1 &amp;lt;- tibble(pitch2 = strsplit(pitch2, &amp;quot; &amp;quot;)[[1]],
+               duration = duration2,
+               position = position)
+song2 &amp;lt;- tibble(pitch3 = strsplit(pitch3, &amp;quot; &amp;quot;)[[1]],
+                duration = duration3,
+                position = position2)
+
+#instead of specifying sharps or flats in the above, I found the positions that should have
+#been flat and adjusted them accordingly.
+song1 &amp;lt;-
+  song1 %&amp;gt;%
+  mutate(octave = substring(pitch2, nchar(pitch2)) %&amp;gt;%
+           {suppressWarnings(as.numeric(.))} %&amp;gt;%
+           ifelse(is.na(.), 4, .),
+         note = notes[substr(pitch2, 1, 1)],
+         note = note + grepl(&amp;quot;#&amp;quot;, pitch2) -
+           grepl(&amp;quot;b&amp;quot;, pitch2) + octave * 13 +
+           ifelse(position %in% c(10, 11, 12, 33, 34, 35, 42), 1, 0) * -12,
+         freq = 2 ^ ((note - 60) / 12) * 440)
+
+song2 &amp;lt;-
+  song2 %&amp;gt;%
+  mutate(octave = substring(pitch3, nchar(pitch3)) %&amp;gt;%
+           {suppressWarnings(as.numeric(.))} %&amp;gt;%
+           ifelse(is.na(.), 4, .),
+         note = notes[substr(pitch3, 1, 1)],
+         note = note + grepl(&amp;quot;#&amp;quot;, pitch3) -
+           grepl(&amp;quot;b&amp;quot;, pitch3) + octave * 13 +
+           ifelse(position %in% c(10, 11, 12, 33, 34, 35, 42), 1, 0) * -12,
+         freq = 2 ^ ((note - 60) / 12) * 440)
+
+######################
+#And last but not least!
+tempo &amp;lt;- 230
+sample_rate &amp;lt;- 44100
+
+song_wave &amp;lt;-
+  mapply(make_sine, song1$freq, song1$duration) %&amp;gt;%
+  do.call(&amp;quot;c&amp;quot;, .)
+song_wave2 &amp;lt;-
+  mapply(make_sine, song2$freq, song2$duration) %&amp;gt;%
+  do.call(&amp;quot;c&amp;quot;, .)
+
+#highlight and run this code block all at once!
+play(song_wave)
+Sys.sleep(16)
+play(song_wave2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3.-animations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3. Animations&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;gganimate&lt;/code&gt; package does all the heavy legwork here, so I can claim no credit. The package has too many functions and ways to play around with for me to get into everything, but I’ll cover one use case below. More info and examples can be found at the GitHub repo &lt;a href=&#34;https://github.com/thomasp85/gganimate&#34;&gt;here&lt;/a&gt; or the &lt;a href=&#34;https://cran.r-project.org/web/packages/gganimate/vignettes/gganimate.html&#34;&gt;vignette&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;First, load in the built in &lt;code&gt;mtcars&lt;/code&gt; dataset&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data(&amp;quot;mtcars&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, plot a colored boxplot with ggplot. I’ve also changed the theme a bit to have a dark background and gotten rid of the legend so we’re not really interested in what the data has to say right now.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#boxplot
+p &amp;lt;- ggplot(mtcars, aes(factor(cyl), mpg, fill = factor(cyl))) + 
+  geom_boxplot() + 
+  #flip so they go left and right instead of up and down
+  coord_flip() +
+  #make the theme dark + hide legend
+  labs(x = &amp;quot;&amp;quot;, y = &amp;quot;&amp;quot;) + 
+  theme_void() + theme(legend.position = &amp;quot;none&amp;quot;,
+                      panel.background = element_rect(fill = &amp;quot;black&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have to give the plot some parameter on which to transition through - it can be something you’ve already included in the static plot of a different dimension entirely. I selected &lt;code&gt;gear&lt;/code&gt; to be transitioned over, meaning that the boxplot will get rendered as above for one gear type, then gets rerendered for the next gear type in real time. The &lt;code&gt;transition_length&lt;/code&gt; controls how quickly the plot shifts, while &lt;code&gt;state_length&lt;/code&gt; controls how long it stays static after transitioning. &lt;code&gt;enter_fade&lt;/code&gt; and &lt;code&gt;exit_shrink&lt;/code&gt; control how the boxplots move as they transition and the &lt;code&gt;ease_aes&lt;/code&gt; guides how to interpolate between plots as they transtion.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#animation
+p + transition_states(gear, transition_length = 2, state_length = 1) +
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes(&amp;#39;sine-in-out&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-05-02-rendering-audio-animations-in-r_files/figure-html/unnamed-chunk-10-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;You can safe your animation in GIF format if you like. It defaults to the most recent animation, or you specify the plot manually.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#save the animation as a GIF
+gganimate::anim_save(&amp;quot;boxplot.gif&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When I want to play music along with the plot, I typically render the animation first, then start the audio. It’s still a work in progress to try and do both in one fell swoop, but hopefully this gets you started with the fun stuff!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Mapping Your Rides With rStrava</title>

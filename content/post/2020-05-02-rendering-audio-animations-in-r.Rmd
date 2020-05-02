@@ -1,0 +1,213 @@
+---
+title: Rendering Audio + Animations in R
+author: Sarah Van Alsten
+date: '2020-05-02'
+slug: rendering-audio-animations-in-r
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-05-02T15:01:30-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Today I'll give a brief introduction as to how to create simple audio/music files in R without relying on importation from other software or downloads from APIs. Of course, you won't be able to use voice-overs or words, but it's still quite empowering to know how.
+
+## Step 1. Install/open packages
+```{r}
+library(dplyr) #for data management
+library(audio) #for rendering audio
+library(ggplot2) #for plot
+library(gganimate) #to animate
+```
+
+
+Due to **potential** copyright issues, I'll demonstrate using two songs available in the public domain: "Happy Birthday to You" and "Victors" (the University of Michigan fightsong. Go Blue!). The first is shorter and simpler, so we'll start there.
+
+
+## Step 2. Make music
+
+All you really need to know to recreate any song are 1) the notes (e.g. A#, B, C) and 2) the duration each note is played (e.g. eighth-note, quarter note). You can find these on sheet music, though they will have to be transcribed by hand [at least as far as I know. If you have a way to work with sheet music I'd love to hear it]. First, we assign each note letter a numeric value, then specify what the notes (pitch) are and the duration (duration) each is played. Then bind together in a data frame.
+Note that we assume we're generally in the 4th octave unless otherwise specifed by a 5 appended to the end of a letter.
+
+```{r}
+notes <- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 10)
+
+pitch <- "D D E D G F# D D E D A G D D D5 B G F# E C5 C5 B G A G"
+
+duration <- c(rep(c(0.75, 0.25, 1, 1, 1, 2), 2),
+              0.75, 0.25, 1, 1, 1, 1, 1, 0.75, 0.25, 1, 1, 1, 2)
+
+bday <- tibble(pitch = strsplit(pitch, " ")[[1]],
+                   duration = duration)
+```
+
+Now we have to make these come to life as actual sound waves. You can read more about wave properties [here](http://digitalsoundandmusic.com/2-1-2-properties-of-sine-waves/), but for now just recognize that we have to translate the pitch into a frequency, which we will then later use to create a sine wave for playing.
+
+
+```{r}
+bday <- bday %>%
+  #if we added a '5' for 5th octave, it will have more characters- thus, find octave like this
+  mutate(octave = substring(pitch, nchar(pitch)) %>%
+           {suppressWarnings(as.numeric(.))} %>%
+           ifelse(is.na(.), 4, .),
+      #get actually string value of the note
+         note = notes[substr(pitch, 1, 1)],
+      #add 1 if it's a sharp (half-step up) or subtract 1 if it's a flat (b) 
+         note = note + grepl("#", pitch) -
+           grepl("b", pitch) + octave * 12 +
+           12 * (note < 3),
+      #translate into frequency
+         freq = 2 ^ ((note - 60) / 12) * 440)
+```
+
+
+Next, we can play with how fast and high pitched we want to play the song at. There's no exact science here- play around with whatever ends up sounding good. The tempo and sampling rate then control the properties of the sine wave.
+
+```{r}
+#set a speed to play at
+tempo <- 120
+
+#set sampling rate (this controls how high pitched i)
+sample_rate <- 44100
+
+#function to create a sine wave
+make_sine <- function(freq, duration) {
+  wave <- sin(seq(0, duration / tempo * 60, 1 / sample_rate) *
+                freq * 2 * pi)
+  fade <- seq(0, 1, 50 / sample_rate)
+  wave * c(fade, rep(1, length(wave) - 2 * length(fade)), rev(fade))
+}
+
+#translate pitches into sine waves
+bday_wave <-
+  mapply(make_sine, bday$freq, bday$duration) %>%
+  do.call("c", .)
+
+```
+
+Finally, play the music.
+
+```{r, eval=FALSE}
+play(bday_wave)
+```
+
+If you want to save your audio file, you can do so with the `save.wave` function
+
+```{r, eval = FALSE}
+save.wave(bday_wave, "bday.wav")
+```
+
+## More Complicated Music
+One component that isn't easily addressed by the above operations is rests- the period when there is a short break between notes. My go-to workaround has been to create several separate smaller strings of audio, split at the places where a rest would be, then play them all together at the end with a specified `Sys.sleep()` time to time the playback correctly. Again, it's not entirely feasible when you have a lot of rests or a long piece of music, but it works for smaller jobs.
+
+Here's 'Hail to the Victors'
+```{r, eval=FALSE}
+#Notice I adjusted these a bit from before. You can play with spacing to get different
+#sounds out of your notes, just be sure to preserve the general alphabetical order
+notes <- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 9)
+
+pitch2 <- "C A B C A B C D B C D B C D E F F C C D A B C B A E"
+pitch3 <- "C A B C A B C D B C D B C D E F F C C D A B C E C B A"
+duration2 <- c(4, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 4, 3, .5, .5, 2, 2, 2, 2, 4, 2, 2, 5)
+duration3 <- c(4, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 4, 3, .5, .5, 2, 2, 2, 2, 2, 2, 3, 1, 5)
+position <- 1:length(pitch2)
+position2 <- 1:length(pitch3)
+
+song1 <- tibble(pitch2 = strsplit(pitch2, " ")[[1]],
+               duration = duration2,
+               position = position)
+song2 <- tibble(pitch3 = strsplit(pitch3, " ")[[1]],
+                duration = duration3,
+                position = position2)
+
+#instead of specifying sharps or flats in the above, I found the positions that should have
+#been flat and adjusted them accordingly.
+song1 <-
+  song1 %>%
+  mutate(octave = substring(pitch2, nchar(pitch2)) %>%
+           {suppressWarnings(as.numeric(.))} %>%
+           ifelse(is.na(.), 4, .),
+         note = notes[substr(pitch2, 1, 1)],
+         note = note + grepl("#", pitch2) -
+           grepl("b", pitch2) + octave * 13 +
+           ifelse(position %in% c(10, 11, 12, 33, 34, 35, 42), 1, 0) * -12,
+         freq = 2 ^ ((note - 60) / 12) * 440)
+
+song2 <-
+  song2 %>%
+  mutate(octave = substring(pitch3, nchar(pitch3)) %>%
+           {suppressWarnings(as.numeric(.))} %>%
+           ifelse(is.na(.), 4, .),
+         note = notes[substr(pitch3, 1, 1)],
+         note = note + grepl("#", pitch3) -
+           grepl("b", pitch3) + octave * 13 +
+           ifelse(position %in% c(10, 11, 12, 33, 34, 35, 42), 1, 0) * -12,
+         freq = 2 ^ ((note - 60) / 12) * 440)
+
+######################
+#And last but not least!
+tempo <- 230
+sample_rate <- 44100
+
+song_wave <-
+  mapply(make_sine, song1$freq, song1$duration) %>%
+  do.call("c", .)
+song_wave2 <-
+  mapply(make_sine, song2$freq, song2$duration) %>%
+  do.call("c", .)
+
+#highlight and run this code block all at once!
+play(song_wave)
+Sys.sleep(16)
+play(song_wave2)
+```
+
+## Step 3. Animations
+
+The `gganimate` package does all the heavy legwork here, so I can claim no credit. The package has too many functions and ways to play around with for me to get into everything, but I'll cover one use case below. More info and examples can be found at the GitHub repo [here](https://github.com/thomasp85/gganimate) or the [vignette](https://cran.r-project.org/web/packages/gganimate/vignettes/gganimate.html)
+
+First, load in the built in `mtcars` dataset
+```{r}
+data("mtcars")
+```
+
+Next, plot a colored boxplot with ggplot. I've also changed the theme a bit to have a dark background and gotten rid of the legend so we're not really interested in what the data has to say right now.
+```{r}
+#boxplot
+p <- ggplot(mtcars, aes(factor(cyl), mpg, fill = factor(cyl))) + 
+  geom_boxplot() + 
+  #flip so they go left and right instead of up and down
+  coord_flip() +
+  #make the theme dark + hide legend
+  labs(x = "", y = "") + 
+  theme_void() + theme(legend.position = "none",
+                      panel.background = element_rect(fill = "black"))
+```
+
+We have to give the plot some parameter on which to transition through - it can be something you've already included in the static plot of a different dimension entirely. I selected `gear` to be transitioned over, meaning that the boxplot will get rendered as above for one gear type, then gets rerendered for the next gear type in real time. The `transition_length` controls how quickly the plot shifts, while `state_length` controls how long it stays static after transitioning. `enter_fade` and `exit_shrink` control how the boxplots move as they transition and the `ease_aes` guides how to interpolate between plots as they transtion.
+
+```{r}
+#animation
+p + transition_states(gear, transition_length = 2, state_length = 1) +
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+You can safe your animation in GIF format if you like. It defaults to the most recent animation, or you specify the plot manually.
+
+```{r, eval = FALSE}
+#save the animation as a GIF
+gganimate::anim_save("boxplot.gif")
+```
+
+
+When I want to play music along with the plot, I typically render the animation first, then start the audio. It's still a work in progress to try and do both in one fell swoop, but hopefully this gets you started with the fun stuff!
+
