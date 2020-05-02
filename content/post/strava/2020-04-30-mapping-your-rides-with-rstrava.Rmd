@@ -139,13 +139,13 @@ get_elev_prof(routes, key = mykey, units = 'imperial')
 
 
 #4 most recent activities w/ map data available
-get_activity_list(stoken) %>%
+get_activity_list(stoken = strava_token) %>%
   compile_activities(1:4) %>%
   get_elev_prof(key = mykey)
 
 
 #activity w/ ID 3221699709
-get_activity_list(stoken) %>%
+get_activity_list(stoken = strava_token) %>%
   compile_activities(id = '3221699709') %>%
   get_elev_prof(key = mykey)
 
@@ -176,7 +176,7 @@ Finally, for split pace
 
 ```{r}
 # plots for most recent activity
-plot_spdsplits(routes, stoken = stoken, id = '3221699709', units = 'imperial')
+plot_spdsplits(routes, stoken = strava_token, id = '3221699709', units = 'imperial')
 ```
 ![](\img\speed_split.PNG)
 
@@ -190,7 +190,7 @@ stream <- get_activity_streams(act_data = routes, stoken = strava_token,
                                id = '3221699709', units = "imperial")
 
 
-stream <- get_activity_streams(act_data = routes, stoken = stoken,
+stream <- get_activity_streams(act_data = routes, stoken = strava_token,
                                id = '3221699709', units = "imperial")
 
 ```

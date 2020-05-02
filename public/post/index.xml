@@ -109,13 +109,13 @@ get_elev_prof(routes, key = mykey, units = &amp;#39;imperial&amp;#39;)
 
 
 #4 most recent activities w/ map data available
-get_activity_list(stoken) %&amp;gt;%
+get_activity_list(stoken = strava_token) %&amp;gt;%
   compile_activities(1:4) %&amp;gt;%
   get_elev_prof(key = mykey)
 
 
 #activity w/ ID 3221699709
-get_activity_list(stoken) %&amp;gt;%
+get_activity_list(stoken = strava_token) %&amp;gt;%
   compile_activities(id = &amp;#39;3221699709&amp;#39;) %&amp;gt;%
   get_elev_prof(key = mykey)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;\img\elev_prof1.PNG&#34; /&gt;
@@ -135,7 +135,7 @@ get_heat_map(routes, id = &amp;#39;3221699709&amp;#39;, alpha = 1, add_elev = T,
 &lt;img src=&#34;\img\grad_heatmap.PNG&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Finally, for split pace&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plots for most recent activity
-plot_spdsplits(routes, stoken = stoken, id = &amp;#39;3221699709&amp;#39;, units = &amp;#39;imperial&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+plot_spdsplits(routes, stoken = strava_token, id = &amp;#39;3221699709&amp;#39;, units = &amp;#39;imperial&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;\img\speed_split.PNG&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;stream-data&#34; class=&#34;section level2&#34;&gt;
@@ -145,7 +145,7 @@ plot_spdsplits(routes, stoken = stoken, id = &amp;#39;3221699709&amp;#39;, units
                                id = &amp;#39;3221699709&amp;#39;, units = &amp;quot;imperial&amp;quot;)
 
 
-stream &amp;lt;- get_activity_streams(act_data = routes, stoken = stoken,
+stream &amp;lt;- get_activity_streams(act_data = routes, stoken = strava_token,
                                id = &amp;#39;3221699709&amp;#39;, units = &amp;quot;imperial&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can plot streams using the same plotting functions as activity data (e.g. heat maps, speed splits). The output is essentially the same as for plotting activity data. Here, I’ve changed the heatmap to show speed instead of gradient.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#plot speed on heat map

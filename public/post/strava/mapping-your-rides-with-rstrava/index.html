@@ -622,13 +622,13 @@ get_elev_prof(routes, key = mykey, units = &#39;imperial&#39;)
 
 
 #4 most recent activities w/ map data available
-get_activity_list(stoken) %&gt;%
+get_activity_list(stoken = strava_token) %&gt;%
   compile_activities(1:4) %&gt;%
   get_elev_prof(key = mykey)
 
 
 #activity w/ ID 3221699709
-get_activity_list(stoken) %&gt;%
+get_activity_list(stoken = strava_token) %&gt;%
   compile_activities(id = &#39;3221699709&#39;) %&gt;%
   get_elev_prof(key = mykey)</code></pre>
 <p><img src="\img\elev_prof1.PNG" />
@@ -648,7 +648,7 @@ get_heat_map(routes, id = &#39;3221699709&#39;, alpha = 1, add_elev = T, f = 0.3
 <img src="\img\grad_heatmap.PNG" /></p>
 <p>Finally, for split pace</p>
 <pre class="r"><code># plots for most recent activity
-plot_spdsplits(routes, stoken = stoken, id = &#39;3221699709&#39;, units = &#39;imperial&#39;)</code></pre>
+plot_spdsplits(routes, stoken = strava_token, id = &#39;3221699709&#39;, units = &#39;imperial&#39;)</code></pre>
 <p><img src="\img\speed_split.PNG" /></p>
 </div>
 <div id="stream-data" class="section level2">
@@ -658,7 +658,7 @@ plot_spdsplits(routes, stoken = stoken, id = &#39;3221699709&#39;, units = &#39;
                                id = &#39;3221699709&#39;, units = &quot;imperial&quot;)
 
 
-stream &lt;- get_activity_streams(act_data = routes, stoken = stoken,
+stream &lt;- get_activity_streams(act_data = routes, stoken = strava_token,
                                id = &#39;3221699709&#39;, units = &quot;imperial&quot;)</code></pre>
 <p>You can plot streams using the same plotting functions as activity data (e.g. heat maps, speed splits). The output is essentially the same as for plotting activity data. Here, I’ve changed the heatmap to show speed instead of gradient.</p>
 <pre class="r"><code>#plot speed on heat map
