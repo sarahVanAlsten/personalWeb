@@ -5,12 +5,20 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
       <link>/authors/</link>
     </image>
+    
+    <item>
+      <title>Sarah C. Van Alsten, Charles S Rabkin, Norie Sawada, Taichi Shimazu, Hadrien Charvat, Taiki Yamaji, Manami Inoue, Troy J. Kemp, Ligia A. Pinto, M. Constanza Camargo, Shoichiro Tsugane, Minkyo Song</title>
+      <link>/authors/sarah-c.-van-alsten-charles-s-rabkin-norie-sawada-taichi-shimazu-hadrien-charvat-taiki-yamaji-manami-inoue-troy-j.-kemp-ligia-a.-pinto-m.-constanza-camargo-shoichiro-tsugane-minkyo-song/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/sarah-c.-van-alsten-charles-s-rabkin-norie-sawada-taichi-shimazu-hadrien-charvat-taiki-yamaji-manami-inoue-troy-j.-kemp-ligia-a.-pinto-m.-constanza-camargo-shoichiro-tsugane-minkyo-song/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Karishma Furtado, Alexis Duncan, Jen Kocher, Pranav Nandan</title>

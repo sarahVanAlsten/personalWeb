@@ -229,7 +229,6 @@ single_ride <- all.acts %>%
 
 Mapping in R requires you to specify exactly where you want the map to focus. This is called a "bounding box" (bbox for short), and we can get Google API to do that for us with the combination of `get_map` and `make_bbox`. We pass it the latitude and longitude that are available in the streams, and it does the work for us.
 ```{r}
-
 #create a background map base on which we will plot
 map_base <- get_map(location = make_bbox(lng, lat,
                                          data = single_ride,
