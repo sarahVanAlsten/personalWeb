@@ -25,5 +25,4 @@ url_slides: ""
 url_source: https://cebp.aacrjournals.org/content/early/2020/05/28/1055-9965.EPI-19-1513
 url_video: ""
 ---
-![Falling Through Cracks](/img/image.png)
 ---
