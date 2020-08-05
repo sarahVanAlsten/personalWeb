@@ -22,6 +22,17 @@
     </item>
     
     <item>
+      <title>Sequence Analysis- What It Is and How to Do It</title>
+      <link>/project/internal/seqanal/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/project/internal/seqanal/</guid>
+      <description>&lt;p&gt;Sequence analysis is a technique used in longitudinal research to understand developmental trajectories. I will briefly cover the main goals of this technique and sample code of how to conduct analyses, but for an in depth discussion of the methodology and examples of sequence-type research questions, I&#39;d recommend you browse through the TraMineR R package &lt;a href=&#34;http://mephisto.unige.ch/pub/TraMineR/doc/TraMineR-Users-Guide.pdf&#34;&gt;user guide&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;print(&amp;quot;hi&amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Metabolic Syndrome, Physical Activity and Inflammation, A Cross-Sectional Analysis of 110 Circulating Biomarkers in Japanese Adults</title>
       <link>/publication/mets_nci/</link>
       <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
