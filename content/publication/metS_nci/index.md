@@ -12,9 +12,9 @@ publication_types:
 publishDate: "2020-05-28T00:00:00Z"
 summary: Metabolic Syndrome is associated with higher circulating IL18, CRP, SAP, CCL19, CXCL12, and CCL28. Low Physical Activity was not associated with any circulating inflammatory markers.
 tags:
-- Citation
-- Gender
-- Social science
+- Inflammation
+- Immune
+- Adiposity
 title: Metabolic Syndrome, Physical Activity and Inflammation, A Cross-Sectional Analysis of 110 Circulating Biomarkers in Japanese Adults
 url_code: ""
 url_dataset: ""

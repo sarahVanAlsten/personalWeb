@@ -5,12 +5,20 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 05 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
       <link>/authors/</link>
     </image>
+    
+    <item>
+      <title>Sarah C. Van Alsten, Alexis E. Duncan</title>
+      <link>/authors/sarah-c.-van-alsten-alexis-e.-duncan/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/authors/sarah-c.-van-alsten-alexis-e.-duncan/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Sarah C. Van Alsten, Charles S Rabkin, Norie Sawada, Taichi Shimazu, Hadrien Charvat, Taiki Yamaji, Manami Inoue, Troy J. Kemp, Ligia A. Pinto, M. Constanza Camargo, Shoichiro Tsugane, Minkyo Song</title>
@@ -33,7 +41,7 @@
       <link>/authors/sarah/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/authors/sarah/</guid>
-      <description>&lt;p&gt;I am an MPH candidate in Epidemiology and Biostatistics at Washington University in St. Louis with a background in Neuroscience and Genetics. I have experience in both psychiatric and chronic disease epidemiology, with particular emphases on eating disorders, diabetes, and comorbidity. I&#39;m currently interested in the application of machine learning and big data to epidemiologic problems, as well as the development of new causal inference methods for big data. When I&#39;m not in the lab or fiddling around in R, you can find me playing Settlers of Catan, running, cycling, or perfecting the art of latte making. Thanks for stopping by!&lt;/p&gt;
+      <description>&lt;p&gt;I am a PhD student in Epidemiology at UNC Chapel Hill with a background in neuroscience and genetics. I have experience in both psychiatric and chronic disease epidemiology, and am currently researching how adiposity influences the immune microenvironment of breast cancer. I&#39;m also interested in the application of machine learning and big data to epidemiologic problems, as well as the development of new causal inference methods for big data. When I&#39;m not in the lab or fiddling around in R, you can find me playing Settlers of Catan, running, cycling, or perfecting the art of latte making. Thanks for stopping by!&lt;/p&gt;
 </description>
     </item>
     

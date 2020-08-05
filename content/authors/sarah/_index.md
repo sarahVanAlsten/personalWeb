@@ -14,7 +14,7 @@ role: Researcher
 
 # Organizations/Affiliations
 organizations:
-- name: Washington University in St. Louis
+- name: University of North Carolina at Chapel Hill
   url: ""
 
 interests:
@@ -25,6 +25,9 @@ interests:
 
 education:
   courses:
+  - course: PhD in Epidemiology
+    institution: University of North Carolina at Chapel Hill
+    year: Present
   - course: MPH in Epidemiology and Biostatistics
     institution: Washington University in St. Louis
     year: 2020
@@ -63,5 +66,5 @@ user_groups:
 - Researchers
 
 ---
-I am an MPH candidate in Epidemiology and Biostatistics at Washington University in St. Louis with a background in Neuroscience and Genetics. I have experience in both psychiatric and chronic disease epidemiology, with particular emphases on eating disorders, diabetes, and comorbidity. I'm currently interested in the application of machine learning and big data to epidemiologic problems, as well as the development of new causal inference methods for big data. When I'm not in the lab or fiddling around in R, you can find me playing Settlers of Catan, running, cycling, or perfecting the art of latte making. Thanks for stopping by!
+I am a PhD student in Epidemiology at UNC Chapel Hill with a background in neuroscience and genetics. I have experience in both psychiatric and chronic disease epidemiology, and am currently researching how adiposity influences the immune microenvironment of breast cancer. I'm also interested in the application of machine learning and big data to epidemiologic problems, as well as the development of new causal inference methods for big data. When I'm not in the lab or fiddling around in R, you can find me playing Settlers of Catan, running, cycling, or perfecting the art of latte making. Thanks for stopping by!
 

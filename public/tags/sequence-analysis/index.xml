@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sequence Analysis | Sarah Van Alsten</title>
+    <link>/tags/sequence-analysis/</link>
+      <atom:link href="/tags/sequence-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sequence Analysis</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 05 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Sequence Analysis</title>
+      <link>/tags/sequence-analysis/</link>
+    </image>
+    
+    <item>
+      <title>Lifetime Patterns of Comorbidity In Eating Disorders An Approach Using Sequence Analysis</title>
+      <link>/publication/seqanal_duncan/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/seqanal_duncan/</guid>
+      <description>&lt;hr&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -89,10 +89,10 @@ email = "sarahvanalsten@gmail.com"
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "1 Brookings Drive", city = "St. Louis", region = "MO", postcode = "63130", country = "United States", country_code = "US"}
+address = {street = "South Columbia St.", city = "Chapel Hill", region = "NC", postcode = "27514", country = "United States", country_code = "US"}
 
 # Directions for visitors to locate you.
-directions = "Part of the Brown School, Washington University in St. Louis"
+directions = "Part of the Gillings Global School of Public Health, UNC Chapel Hill"
 
 # Contact links
 contact_links = [

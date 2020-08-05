@@ -5,12 +5,21 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Sarah Van Alsten</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 05 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Sarah Van Alsten</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Lifetime Patterns of Comorbidity In Eating Disorders An Approach Using Sequence Analysis</title>
+      <link>/publication/seqanal_duncan/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/seqanal_duncan/</guid>
+      <description>&lt;hr&gt;
+</description>
+    </item>
     
     <item>
       <title>Metabolic Syndrome, Physical Activity and Inflammation, A Cross-Sectional Analysis of 110 Circulating Biomarkers in Japanese Adults</title>

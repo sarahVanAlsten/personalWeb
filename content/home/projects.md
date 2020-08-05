@@ -27,26 +27,22 @@ subtitle = ""
   [[content.filter_button]]
     name = "All"
     tag = "*"
-
-  [[content.filter_button]]
-    name = "Diabetes"
-    tag = "Diabetes"   
     
   [[content.filter_button]]
     name = "Epidemiology"
     tag = "Epidemiology"
         
   [[content.filter_button]]
-    name = "Methods"
-    tag = "Methods"
+    name = "Cancer"
+    tag = "Cancer"
     
   [[content.filter_button]]
     name = "Psychiatric"
     tag = "Psychiatric" 
         
   [[content.filter_button]]
-    name = "R"
-    tag = "R"
+    name = "Machine Learning"
+    tag = "Machine Learning"
     
   [[content.filter_button]]
     name = "Sequence Analysis"

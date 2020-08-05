@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 05 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,9 +13,57 @@
     </image>
     
     <item>
+      <title>Machine Learning</title>
+      <link>/tags/machine-learning/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Psychiatric</title>
+      <link>/tags/psychiatric/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/psychiatric/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sequence Analysis</title>
+      <link>/tags/sequence-analysis/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/sequence-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Adiposity</title>
+      <link>/tags/adiposity/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/adiposity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Immune</title>
+      <link>/tags/immune/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/immune/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Inflammation</title>
+      <link>/tags/inflammation/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/inflammation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Citation</title>
       <link>/tags/citation/</link>
-      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/citation/</guid>
       <description></description>
     </item>
@@ -23,7 +71,7 @@
     <item>
       <title>Gender</title>
       <link>/tags/gender/</link>
-      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/gender/</guid>
       <description></description>
     </item>
@@ -31,7 +79,7 @@
     <item>
       <title>Social science</title>
       <link>/tags/social-science/</link>
-      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/social-science/</guid>
       <description></description>
     </item>
